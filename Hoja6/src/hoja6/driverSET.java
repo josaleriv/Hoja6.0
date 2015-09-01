@@ -10,12 +10,18 @@ public class driverSET {
      */
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);
-        SETFactory factory = new SETFactory(); // instanciar la Factory
+        SETFactory setfactory = new SETFactory(); // instanciar la Factory
         AbstractSet tiposDesarrolladores = null;
         String nombre, grupo;
-        int java, web, celulares, cantjava, cantweb, cantcelulares, opcionSET, opcionImplementacion;
+        int grupoJava, grupoWeb, grupoCelulares, totalJava, totalWeb, totalCelulares, opcionSET, opcionImplementacion;
         int x=0;
-        
+        int contador = 0;
+        ArrayList<String> listaJava = new ArrayList<String>();
+        ArrayList<String> listaWeb = new ArrayList<String>();
+        ArrayList<String> listaCelulares = new ArrayList<String>();
+        ArrayList<String> listaTotal = new ArrayList<String>();
+        ArrayList<String> listaWebCelulares = new ArrayList<String>();
+        ArrayList<String> listaWebCelulares2 = new ArrayList<String>();
         System.out.print("\nBienvenido");
         while (x==0){
             System.out.println("\nPor medio del numero, escoja una opcion:\n\n1) Seleccionar tipo de implementacion.\n2) Ingreso de datos.\n3) Desplegar datos.\n4) Salir.");
@@ -33,63 +39,172 @@ public class driverSET {
                 opcionImplementacion = scan.nextInt();
                 if (opcionImplementacion==1 || opcionImplementacion==2 || opcionImplementacion==3) { 
                     opcionSET=5; 
-                    tiposDesarrolladores = factory.implementacion(opcionImplementacion); 
+                    tiposDesarrolladores = setfactory.implementacion(opcionImplementacion); 
                 }
                 else { 
                     System.out.println("\nERROR. Ingresar el numero de su eleccion."); 
                 }
-                /*
-                    desarrollador persona= new desarrollador ("Marlon", 1, 0, 0);
-                    desarrolladores.add(persona);
-                    Iterator<desarrollador> nombres= desarrolladores.iterator();
-                    nombre = nombres.next().getNombre();*/
             }
             while (opcionSET==2){ 
-                System.out.println("\nIngrese el nombre y luego el grupo al que pertenece. Puede ingresar varios grupos, pero estos se deben ingresar en orden y separadas por coma(,)."); 
-                System.out.println("\nNombre: Marlon\nGrupo: 2,3"); 
-                System.out.print("\nNombre:"); 
+                System.out.println("\nIngrese el nombre:");  
                 nombre = scan.next();
-                System.out.print("\n\n1)Desarrolladores Java.\n2)Desarrolladores Web.\n3)Desarrolladores Celulares.\n"); 
-                System.out.print("\nGrupo:");
+                System.out.print("\n1)Desarrolladores Java.\n2)Desarrolladores Web.\n3)Desarrolladores Celulares.\n"); 
+                System.out.print("\nIngrese uno o mas tipos de desarrolladores. \n(De ser mas de uno colocar todos los numeros en la misma linea, sin espacios y sin comas).\n");
                 //se pone dos veces la instruccion para que se vacie el buffer 
                 grupo = scan.nextLine();
                 grupo = scan.nextLine();
-                if (grupo.equals("1")){ java=1; web=0; celulares=0;  opcionSET = 5; SETDesarrollador persona = new SETDesarrollador(nombre, java, web, celulares); tiposDesarrolladores.add(persona); }
-                else if (grupo.equals("2")){ java=0; web=1; celulares=0; opcionSET = 5; SETDesarrollador persona = new SETDesarrollador(nombre, java, web, celulares); tiposDesarrolladores.add(persona); }
-                else if (grupo.equals("3")){ java=0; web=0; celulares=1;  opcionSET = 5; SETDesarrollador persona = new SETDesarrollador(nombre, java, web, celulares); tiposDesarrolladores.add(persona); }
-                else if (grupo.equals("1,2")){ java=1; web=1; celulares=0; opcionSET = 5; SETDesarrollador persona = new SETDesarrollador(nombre, java, web, celulares); tiposDesarrolladores.add(persona); }
-                else if (grupo.equals("1,3")){ java=1; web=0; celulares=1; opcionSET = 5; SETDesarrollador persona = new SETDesarrollador(nombre, java, web, celulares); tiposDesarrolladores.add(persona); }
-                else if (grupo.equals("2,3")){ java=0; web=1; celulares=1; opcionSET = 5; SETDesarrollador persona = new SETDesarrollador(nombre, java, web, celulares); tiposDesarrolladores.add(persona); }
-                else { System.out.println("La forma ingresada de los grupos no es correcta, por favor intente de nuevo. Recuerde que debe ingresar en orden los grupos y separados por coma(,)."); }
+                if (grupo.equals("1")){ 
+                    grupoJava=1; 
+                    grupoWeb=0; 
+                    grupoCelulares=0;  
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else if (grupo.equals("2")){ 
+                    grupoJava=0; 
+                    grupoWeb=1; 
+                    grupoCelulares=0; 
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else if (grupo.equals("3")){ 
+                    grupoJava=0; 
+                    grupoWeb=0; 
+                    grupoCelulares=1;  
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else if (grupo.equals("12")||grupo.equals("21")){ 
+                    grupoJava=1; 
+                    grupoWeb=1; 
+                    grupoCelulares=0; 
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else if (grupo.equals("13")||grupo.equals("31")){ 
+                    grupoJava=1; 
+                    grupoWeb=0; 
+                    grupoCelulares=1; 
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else if (grupo.equals("23")||grupo.equals("32")){ 
+                    grupoJava=0; 
+                    grupoWeb=1; 
+                    grupoCelulares=1; 
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else if (grupo.equals("123")||grupo.equals("132")||grupo.equals("312")||grupo.equals("321")||grupo.equals("213")||grupo.equals("231")){ 
+                    grupoJava=1; 
+                    grupoWeb=1; 
+                    grupoCelulares=1; 
+                    opcionSET = 5; 
+                    SETDesarrollador persona = new SETDesarrollador(nombre, grupoJava, grupoWeb, grupoCelulares); 
+                    tiposDesarrolladores.add(persona); 
+                }
+                else { 
+                    System.out.println("ERROR. Ingrese alguna de las opciones, sin comas ni espacios."); 
+                }
             }
             while (opcionSET==3){
-                Iterator<SETDesarrollador> nombres= tiposDesarrolladores.iterator();
-                Iterator<SETDesarrollador> javas= tiposDesarrolladores.iterator();
-                Iterator<SETDesarrollador> webs= tiposDesarrolladores.iterator();
+                Iterator<SETDesarrollador> iteratorNombre= tiposDesarrolladores.iterator();
+                Iterator<SETDesarrollador> iteratorJava= tiposDesarrolladores.iterator();
+                Iterator<SETDesarrollador> iteratorWeb= tiposDesarrolladores.iterator();
                 Iterator<SETDesarrollador> celular= tiposDesarrolladores.iterator();
-                cantjava=0;
-                cantweb=0;
-                cantcelulares=0;
-                while (nombres.hasNext()) {
-                    nombre = nombres.next().getNombre();
-                    java = javas.next().getDesarrolladoresJava();
-                    web = webs.next().getDesarrolladoresWeb();
-                    celulares = celular.next().getDesarrolladoresCelulares();
-                    System.out.println(nombre+"  "+java+"  "+web+"  "+celulares);
-                    if (java==1){
-                        cantjava = cantjava + 1;
+                totalJava=0;
+                totalWeb=0;
+                totalCelulares=0;
+                while (iteratorNombre.hasNext()) {
+                    nombre = iteratorNombre.next().getNombre();
+                    grupoJava = iteratorJava.next().getDesarrolladoresJava();
+                    grupoWeb = iteratorWeb.next().getDesarrolladoresWeb();
+                    grupoCelulares = celular.next().getDesarrolladoresCelulares();
+                    listaTotal.add(nombre);
+                    if (grupoJava==1){
+                        totalJava = totalJava + 1;
+                        listaJava.add(nombre);
                     }
-                    if (web==1){
-                        cantweb = cantweb + 1;
+                    if (grupoWeb==1){
+                        totalWeb = totalWeb + 1;
+                        listaWeb.add(nombre);
                     }
-                    if (celulares==1){
-                        cantcelulares = cantcelulares +1;
+                    if (grupoCelulares==1){
+                        totalCelulares = totalCelulares +1;
+                        listaCelulares.add(nombre);
                     }
-
+                    if ((grupoCelulares==1)&(grupoWeb==1)){
+                        listaWebCelulares.add(nombre);
+                    }
+                    if ((grupoCelulares==1)||(grupoWeb==1)){
+                        listaWebCelulares2.add(nombre);
+                    }
                 }
-                System.out.println(cantjava);
-                System.out.println(cantweb);
-                System.out.println(cantcelulares);
+                System.out.println("Desarrolladores Java, Web y Celulares: ");
+                for(int i = 0;i<listaTotal.size();i++){
+                    System.out.print(listaTotal.get(i)+", ");
+                }
+                System.out.println("Desarrolladores Java: ");
+                for(int i = 0;i<listaJava.size();i++){
+                    System.out.print(listaJava.get(i)+", ");
+                }
+                System.out.println("Desarrolladores Web y Celulares: ");
+                for(int i = 0;i<listaWebCelulares.size();i++){
+                    System.out.print(listaWebCelulares.get(i)+", ");
+                }
+                System.out.println("Desarrolladores Web o Celulares: ");
+                for(int i = 0;i<listaWebCelulares2.size();i++){
+                    System.out.print(listaWebCelulares2.get(i)+", ");
+                }
+                for(int i = 0;i<listaWeb.size();i++){
+                    String Cel = listaWebCelulares.get(i);
+                    for(int j = 0; j<listaJava.size(); j++){
+                        String jav = listaJava.get(j);
+                        if(Cel==jav){
+                            contador = contador + 1;
+                        }
+                    }
+                }
+                if(contador==listaJava.size()){
+                    System.out.println("El conjunto de desarrolladores de java SI es un subconjunto de desarrolladores Web");
+                }
+                if(contador!=listaJava.size()){
+                    System.out.println("El conjunto de desarrolladores de java NO es un subconjunto de desarrolladores Web");
+                }
+                if(totalJava<totalWeb){
+                    if(totalWeb>totalCelulares){
+                        System.out.println("El mayor es el conjunto de desarrolladores Web: ");
+                        for(int i = 0;i<listaWeb.size();i++){
+                            System.out.print(listaWeb.get(i)+", ");
+                        }
+                    }
+                    if(totalWeb<totalCelulares){
+                        System.out.println("El mayor es el conjunto de desarrolladores de Celulares: ");
+                        for(int i = 0;i<listaCelulares.size();i++){
+                            System.out.print(listaCelulares.get(i)+", ");
+                        }
+                    }
+                }
+                if(totalWeb<totalJava){
+                    if(totalJava>totalCelulares){
+                        System.out.println("El mayor es el conjunto de desarrolladores Java: ");
+                        for(int i = 0;i<listaJava.size();i++){
+                            System.out.print(listaJava.get(i)+", ");
+                        }
+                    }
+                    if(totalJava<totalCelulares){
+                        System.out.println("El mayor es el conjunto de desarrolladores de Celulares: ");
+                        for(int i = 0;i<listaCelulares.size();i++){
+                            System.out.print(listaCelulares.get(i)+", ");
+                        }
+                    }
+                }
                 break;
             }
             
