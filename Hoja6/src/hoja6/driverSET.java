@@ -142,50 +142,44 @@ public class driverSET {
                     if ((grupoCelulares==1)&(grupoWeb==1)){
                         listaWebCelulares.add(nombre);
                     }
+                    if ((grupoJava==1)&(grupoWeb==1)){
+                        contador++;
+                    }
                     if ((grupoCelulares==1)||(grupoWeb==1)){
                         listaWebCelulares2.add(nombre);
                     }
                 }
-                System.out.println("Desarrolladores Java, Web y Celulares: ");
+                System.out.println("\nDesarrolladores Java, Web y Celulares: ");
                 for(int i = 0;i<listaTotal.size();i++){
                     System.out.print(listaTotal.get(i)+", ");
                 }
-                System.out.println("Desarrolladores Java: ");
+                System.out.println("\n\nDesarrolladores Java: ");
                 for(int i = 0;i<listaJava.size();i++){
                     System.out.print(listaJava.get(i)+", ");
                 }
-                System.out.println("Desarrolladores Web y Celulares: ");
+                System.out.println("\n\nDesarrolladores Web y Celulares: ");
                 for(int i = 0;i<listaWebCelulares.size();i++){
                     System.out.print(listaWebCelulares.get(i)+", ");
                 }
-                System.out.println("Desarrolladores Web o Celulares: ");
+                System.out.println("\n\nDesarrolladores Web o Celulares: ");
                 for(int i = 0;i<listaWebCelulares2.size();i++){
                     System.out.print(listaWebCelulares2.get(i)+", ");
                 }
-                for(int i = 0;i<listaWeb.size();i++){
-                    String Cel = listaWebCelulares.get(i);
-                    for(int j = 0; j<listaJava.size(); j++){
-                        String jav = listaJava.get(j);
-                        if(Cel==jav){
-                            contador = contador + 1;
-                        }
-                    }
-                }
                 if(contador==listaJava.size()){
-                    System.out.println("El conjunto de desarrolladores de java SI es un subconjunto de desarrolladores Web");
+                    System.out.println("\nEl conjunto de desarrolladores de java SI es un subconjunto de desarrolladores Web");
                 }
-                if(contador!=listaJava.size()){
-                    System.out.println("El conjunto de desarrolladores de java NO es un subconjunto de desarrolladores Web");
+                else{
+                    System.out.println("\nEl conjunto de desarrolladores de java NO es un subconjunto de desarrolladores Web");
                 }
                 if(totalJava<totalWeb){
                     if(totalWeb>totalCelulares){
-                        System.out.println("El mayor es el conjunto de desarrolladores Web: ");
+                        System.out.println("\nEl mayor es el conjunto de desarrolladores Web: ");
                         for(int i = 0;i<listaWeb.size();i++){
                             System.out.print(listaWeb.get(i)+", ");
                         }
                     }
                     if(totalWeb<totalCelulares){
-                        System.out.println("El mayor es el conjunto de desarrolladores de Celulares: ");
+                        System.out.println("\nEl mayor es el conjunto de desarrolladores de Celulares: ");
                         for(int i = 0;i<listaCelulares.size();i++){
                             System.out.print(listaCelulares.get(i)+", ");
                         }
@@ -193,17 +187,20 @@ public class driverSET {
                 }
                 if(totalWeb<totalJava){
                     if(totalJava>totalCelulares){
-                        System.out.println("El mayor es el conjunto de desarrolladores Java: ");
+                        System.out.println("\nEl mayor es el conjunto de desarrolladores Java: ");
                         for(int i = 0;i<listaJava.size();i++){
                             System.out.print(listaJava.get(i)+", ");
                         }
                     }
                     if(totalJava<totalCelulares){
-                        System.out.println("El mayor es el conjunto de desarrolladores de Celulares: ");
+                        System.out.println("\nEl mayor es el conjunto de desarrolladores de Celulares: ");
                         for(int i = 0;i<listaCelulares.size();i++){
                             System.out.print(listaCelulares.get(i)+", ");
                         }
                     }
+                }
+                else{
+                    System.out.println("\nNo hay conjunto mayor de desarrolladores. ");
                 }
                 break;
             }
