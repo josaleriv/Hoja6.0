@@ -1,5 +1,11 @@
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructuras de Datos
+Hoja de Trabajo 6
+Jose Alejandro Rivera, 14213
+Marcos Benedict, 14368
+*/
 package hoja6;
-
 import java.util.*;
 
 /**

@@ -1,3 +1,10 @@
+/*
+Universidad del Valle de Guatemala
+Algoritmos y Estructuras de Datos
+Hoja de Trabajo 6
+Jose Alejandro Rivera, 14213
+Marcos Benedict, 14368
+*/
 package hoja6;
 import java.util.*;
 /**
@@ -180,9 +187,19 @@ public class driverSET {
                         for(int i = 0;i<listaWeb.size();i++){
                             System.out.print(listaWeb.get(i)+", ");
                         }
+                        Collections.sort(listaWeb);
+                        System.out.println("\ng). En orden ascendente: ");
+                        for(int i = 0;i<listaWeb.size();i++){
+                            System.out.print(listaWeb.get(i)+", ");
+                        }
                     }
                     if(totalWeb<totalCelulares){
                         System.out.println("\nf). El mayor es el conjunto de desarrolladores de Celulares: ");
+                        for(int i = 0;i<listaCelulares.size();i++){
+                            System.out.print(listaCelulares.get(i)+", ");
+                        }
+                        Collections.sort(listaCelulares);
+                        System.out.println("\ng). En orden ascendente: ");
                         for(int i = 0;i<listaCelulares.size();i++){
                             System.out.print(listaCelulares.get(i)+", ");
                         }
@@ -194,9 +211,19 @@ public class driverSET {
                         for(int i = 0;i<listaJava.size();i++){
                             System.out.print(listaJava.get(i)+", ");
                         }
+                        Collections.sort(listaJava);
+                        System.out.println("\ng). En orden ascendente: ");
+                        for(int i = 0;i<listaJava.size();i++){
+                            System.out.print(listaJava.get(i)+", ");
+                        }
                     }
                     if(totalJava<totalCelulares){
                         System.out.println("\nf). El mayor es el conjunto de desarrolladores de Celulares: ");
+                        for(int i = 0;i<listaCelulares.size();i++){
+                            System.out.print(listaCelulares.get(i)+", ");
+                        }
+                        Collections.sort(listaCelulares);
+                        System.out.println("\ng). En orden ascendente: ");
                         for(int i = 0;i<listaCelulares.size();i++){
                             System.out.print(listaCelulares.get(i)+", ");
                         }
